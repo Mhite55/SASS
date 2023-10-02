@@ -1,0 +1,42 @@
+@use "sass:math" ;
+
+
+
+
+$diarhee-heurseuse : rgb(182, 171, 15);
+$taille-nav: 15vh;
+@mixin border($epaisseur: 3px , $couleur: red){
+    border: $epaisseur double $couleur ;
+}
+
+@mixin shape($taille, $cercle: false, $couleur: blue){
+    width: $taille;
+    height: $taille;
+    background-color: $couleur;
+    @if $cercle {
+        border-radius: math.div($taille, 2);
+    }
+}
+nav{
+    width: 100%;
+    height: $taille-nav;
+    background-color: beige;
+     ul {
+        @include border(1px, $diarhee-heurseuse);
+        li {
+        color: red;
+        }
+    }
+    + section {
+        @include border;
+        background-color: $diarhee-heurseuse;
+        height: $taille-nav - 5vh;
+    }
+}
+.square {
+    @include shape(5vw, false , yellow )
+}
+
+.round {
+    @include shape(20vw,true ,lime )
+}
